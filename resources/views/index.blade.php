@@ -9,5 +9,7 @@
 <body>
     <h1>Ini adalah halaman index.blade.php</h1>
     <p>lore ipsum dolor sit amet</p>
+    <p>lore ipsum dolor sit amet</p>
+    <p>lore ipsum dolor sit amet</p>
 </body>
 </html>
