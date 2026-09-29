@@ -4,12 +4,8 @@ on:
   push:
     branches:
       - '**'
-  pull_request:
-    branches:
-      - main
 
 jobs:
-
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -21,19 +17,12 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.4'
-          extensions: mbstring, pdo, pdo_sqlite
+          php-version: '8.3'
+          extensions: mbstring, pdo, pdo_mysql, pdo_sqlite
           coverage: none
-
-      - name: Copy environment file
-        run: cp .env.example .env
 
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist
-
-      - name: Generate application key
-        run: php artisan key:generate
-
 
   test:
     name: Test
@@ -47,11 +36,11 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.4'
-          extensions: mbstring, pdo, pdo_sqlite
+          php-version: '8.3'
+          extensions: mbstring, pdo, pdo_mysql, pdo_sqlite
           coverage: none
 
-      - name: Copy environment file
+      - name: Copy environment
         run: cp .env.example .env
 
       - name: Install Composer dependencies
@@ -60,9 +49,8 @@ jobs:
       - name: Generate application key
         run: php artisan key:generate
 
-      - name: Run Laravel tests
+      - name: Run tests
         run: php artisan test
-
 
   staging:
     name: Staging
@@ -71,8 +59,7 @@ jobs:
 
     steps:
       - name: Staging
-        run: echo "Deploying application to staging environment..."
-
+        run: echo "Deploying to staging..."
 
   production:
     name: Production
@@ -85,26 +72,5 @@ jobs:
       name: production
 
     steps:
-      - name: Production deployment
-        run: echo "Starting production deployment..."
-
-      - name: Step 1
-        run: echo "1. Pull source code terbaru"
-
-      - name: Step 2
-        run: echo "2. Install/update dependency dengan composer install"
-
-      - name: Step 3
-        run: echo "3. Jalankan migration database"
-
-      - name: Step 4
-        run: echo "4. Build frontend assets"
-
-      - name: Step 5
-        run: echo "5. Clear dan cache konfigurasi Laravel"
-
-      - name: Step 6
-        run: echo "6. Restart service/application"
-
-      - name: Step 7
-        run: echo "7. Verifikasi deployment"
+      - name: Deploy
+        run: echo "Deploying to production..."
