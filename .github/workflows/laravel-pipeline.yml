@@ -1,5 +1,5 @@
 # Laravel CI/CD workflow
-name: Laravel CI
+name: Laravel CI/CD Pipeline
 
 on:
   push:
