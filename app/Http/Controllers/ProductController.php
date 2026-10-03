@@ -14,6 +14,15 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
+    public function apiIndex()
+    {
+        $products = Product::latest()->get();
+
+        return response()->json([
+            'data' => $products
+        ]);
+}
+
     public function create()
     {
         return view('products.create');
