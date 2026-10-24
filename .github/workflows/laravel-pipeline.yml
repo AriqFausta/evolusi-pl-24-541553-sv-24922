@@ -1,3 +1,4 @@
+
 # Laravel CI/CD workflow
 name: Laravel CI/CD Pipeline
 
@@ -10,7 +11,6 @@ on:
       - main
 
 jobs:
-
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -89,6 +89,7 @@ jobs:
 
       - name: Run Laravel tests
         run: php artisan test
+
 
   staging:
     name: Staging
