@@ -36,4 +36,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/AriqFausta/evolusi-pl-24-541553-sv-24922:${{ github.sha }}
+          tags: ghcr.io/ariqfausta/evolusi-pl-24-541553-sv-24922:${{ github.sha }}
